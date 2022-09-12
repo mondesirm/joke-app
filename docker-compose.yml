@@ -1,0 +1,12 @@
+# Docker compose to pull the image and run the container
+version: '3'
+services:
+  joke-app:
+    image: mondesirm/joke-app
+    container_name: joke-app
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    working_dir: /app
