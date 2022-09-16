@@ -1,0 +1,17 @@
+name: GA Exercices
+
+on: [pull_request]
+
+jobs:
+  one:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo one
+
+  two:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo two
