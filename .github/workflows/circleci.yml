@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+
+jobs:
+  build-test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - node/install:
+          node-version: '16.13'
+      - node/run:
+          npm-run: build
+      - node/test
+
+workflows:
+  build-test:
+    jobs:
+      - build-test
+        filters:
+          branches:
+            only:
+              - circleci-project-setup
